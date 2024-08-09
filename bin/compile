@@ -3,6 +3,37 @@
 BUILD_DIR=$1
 echo "Compiling Python application in $BUILD_DIR"
 
+echo "-----> Installing Python 3.12.2"
+
+# Download Python 3.12.2
+PYTHON_VERSION="3.12.2"
+PYTHON_TARBALL="Python-${PYTHON_VERSION}.tgz"
+PYTHON_DIR="Python-${PYTHON_VERSION}"
+
+# Download the Python source code
+curl -O "https://www.python.org/ftp/python/${PYTHON_VERSION}/${PYTHON_TARBALL}"
+
+# Extract the tarball
+tar xzf ${PYTHON_TARBALL}
+
+# Navigate to the extracted directory
+cd ${PYTHON_DIR}
+
+# Configure the build
+./configure --prefix=$BUILD_DIR/.heroku/python
+
+# Compile and install Python
+make
+make install
+
+# Return to the build directory
+cd $BUILD_DIR
+
+# Clean up
+rm -rf ${PYTHON_DIR} ${PYTHON_TARBALL}
+
+echo "-----> Python 3.12.2 installation complete"
+
 # Set Python path
 export PATH="$BUILD_DIR/.heroku/python/bin:$PATH"
 
