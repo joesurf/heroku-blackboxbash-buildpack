@@ -1,4 +1,11 @@
 #!/bin/sh
 echo "-----> Release step"
-# No additional steps needed for this example
+
+# Outputting valid YAML for Heroku
+cat << EOF
+---
+default_process_types:
+  web: python app.py
+EOF
+
 exit 0
