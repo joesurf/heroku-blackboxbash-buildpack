@@ -1,14 +1,14 @@
 #!/bin/sh
 
 BUILD_DIR=$1
-CACHE_DIR=$2
+echo "Compiling Python application in $BUILD_DIR"
 
+# Set Python path
+export PATH="$BUILD_DIR/.heroku/python/bin:$PATH"
 
-echo "-----> Installing Python dependencies"
-pip install --upgrade -r $BUILD_DIR/requirements.txt --target=$BUILD_DIR/.heroku/python
+# Install dependencies
+pip install -r $BUILD_DIR/requirements.txt
 
-echo "-----> Cleaning up"
-# Clean up unnecessary files to reduce slug size
-rm -rf $BUILD_DIR/.heroku/python/bin
+# Other custom build steps can be added here
 
-exit 0
+echo "Build complete"
