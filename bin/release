@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "-----> Release step"
+# No additional steps needed for this example
+exit 0
