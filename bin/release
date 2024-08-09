@@ -2,8 +2,6 @@
 
 cat << EOF
 ---
-addons:
-  - heroku-postgresql
 default_process_types:
   web: python3 app.py
 EOF
