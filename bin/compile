@@ -7,10 +7,7 @@ echo "-----> Installing Python"
 # Install Python (you can use a pre-built binary or pyenv)
 
 echo "-----> Installing Python dependencies"
-pip install -r $BUILD_DIR/requirements.txt --target=$BUILD_DIR/.heroku/python
-
-echo "-----> Installing Sentence-Transformers"
-pip install sentence-transformers --target=$BUILD_DIR/.heroku/python
+pip install --upgrade -r $BUILD_DIR/requirements.txt --target=$BUILD_DIR/.heroku/python
 
 echo "-----> Cleaning up"
 # Clean up unnecessary files to reduce slug size
