@@ -1,6 +1,7 @@
 #!/bin/sh
 
 BUILD_DIR=$1
+
 echo "Compiling Python application in $BUILD_DIR"
 
 echo "-----> Installing Python 3.12.2"
@@ -32,10 +33,10 @@ cd $BUILD_DIR
 # Clean up
 rm -rf ${PYTHON_DIR} ${PYTHON_TARBALL}
 
-echo "-----> Python 3.12.2 installation complete"
-
-# Set Python path
+# Set PATH to include the directory where pip is installed
 export PATH="$BUILD_DIR/.heroku/python/bin:$PATH"
+
+echo "-----> Python 3.12.2 installation complete"
 
 # Install dependencies
 pip install -r $BUILD_DIR/requirements.txt
