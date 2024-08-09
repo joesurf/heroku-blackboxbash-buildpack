@@ -3,5 +3,5 @@
 cat << EOF
 ---
 default_process_types:
-  web: python3 app.py
+  worker: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
 EOF
