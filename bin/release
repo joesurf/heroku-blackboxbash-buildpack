@@ -3,5 +3,5 @@
 cat << EOF
 ---
 default_process_types:
-  worker: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
+  web: uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
 EOF
